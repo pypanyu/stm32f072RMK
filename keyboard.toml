@@ -44,12 +44,12 @@ keys = """
 """
 [light]
 # All light pins are high-active by default, uncomment if you want it to be low-active
-capslock.pin = "PA13
+capslock.pin = "PA13"
 #capslock.low_active = false
-#scrolllock.pin = "PA3"
+#scrolllock.pin = "PA6"
 #scrolllock.low_active = false
 # Just ignore if no light pin is used for it
-# numslock.pin = "PA5"
+# numslock.pin = "PA7"
 # numslock.low_active = true
 
 [storage]
