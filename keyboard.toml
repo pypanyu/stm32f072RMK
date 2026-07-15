@@ -7,14 +7,14 @@ manufacturer = "RMK"
 chip = "stm32f072c8"
 
 [matrix]
-input_pins = ["PA0", "PA1", "PA2", "PA3"]
-output_pins = ["PB15", "PB14", "PB13", "PB12", "PB11", "PB10", "PB9", "PB8", "PB7", "PB6", "PB5", "PB4"]
-col2row = true
+row_pins = ["PA0", "PA1", "PA2", "PA3"]
+col_pins = ["PB15", "PB14", "PB13", "PB12", "PB11", "PB10", "PB9", "PB8", "PB7", "PB6", "PB5", "PB4"]
+col2row = true   # 矩阵方向：列扫描行，需在编译时启用对应的 feature
 
 [layout]
 rows = 4
 cols = 12
-layers = 8
+layers = 1
 
 matrix_map = """
 (0,0) (0,1) (0,2) (0,3) (0,4)             (0,5) (0,6) (0,7) (0,8) (0,9)
@@ -33,7 +33,7 @@ keys = """
 """
 
 [light]
-# 按需启用指示灯
+# 指示灯配置（已注释，按需启用）
 # capslock.pin = "PA13"
 # capslock.low_active = false
 # scrolllock.pin = "PA6"
@@ -53,4 +53,4 @@ report_channel_size = 2
 vial_channel_size = 1
 flash_channel_size = 1
 macro_space_size = 8
-# tap_dance_max_num 和 fork_max_num 已删除（不被支持）
+# 注意：tap_dance_max_num 和 fork_max_num 已被移除，无需添加
