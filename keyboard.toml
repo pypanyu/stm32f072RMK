@@ -17,7 +17,7 @@ low_active = true  # 绝大多数机械键盘矩阵填 true
 [layout]
 rows = 4
 cols = 12
-layers = 8
+layers = 1
 
 matrix_map = """
 (0,0) (0,1) (0,2) (0,3) (0,4)             (0,5) (0,6) (0,7) (0,8) (0,9)
@@ -34,15 +34,7 @@ keys = """
   Z  X   C   V   B   ESC   F2   N  M   COMM  DOT   SLASH
   CTRL   GUI   ALT   SHIFT   SPACE   M0(1)   M0(2)   SPACE   M0(3)   LEFT   RIGHT   DEL
 """
-[[layer]]
-name = "2"
-keys = """
-  Kp1  Kp2   Kp3   Kp4   Kp5   Kp6   Kp7   Kp8   Kp9   Kp10
-  
-  
 
- 
-"""
 [light]
 # All light pins are high-active by default, uncomment if you want it to be low-active
 capslock.pin = "PA13"
@@ -67,6 +59,4 @@ flash_channel_size = 1
 macro_space_size = 8
 tap_dance_max_num = 32
 fork_max_num = 0
-combo_max_num = 25
-combo_max_length = 4
-debounce_time = 5
+
