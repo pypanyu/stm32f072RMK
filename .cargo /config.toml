@@ -17,3 +17,13 @@ codegen-units = 1
 panic = "abort"
 debug = false
 strip = true
+
+[profile.release]
+opt-level = "z"       # 最小体积优化，牺牲速度换空间
+codegen-units = 1
+panic = "abort"       # 移除panic打印字符串
+lto = true            # 全局链接优化，删除冗余代码
+strip = true          # 剥离调试符号
+
+[target.thumbv7em-none-eabihf]
+rustflags = ["-C", "link-arg=--nmagic"]
