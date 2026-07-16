@@ -1,29 +1,23 @@
-[package]
-name = "Vorty44"
-version = "0.1.0"
-edition = "2021"
+[target.'cfg(all(target_arch = "arm", target_os = "none"))']
+runner = "probe-rs run --chip stm32f072c8"
+linker = "flip-link"
 
-[dependencies]
-rmk = { git = "https://github.com/HaoboGu/rmk", default-features = false, features = ["col2row"] }
-# 注意：不加 defmt、vial、storage、split 等任何其他特性
+[build]
+# TODO: Pick ONE of these default compilation targets
+target = "thumbv6m-none-eabi"        # Cortex-M0 and Cortex-M0+
+# target = "thumbv7m-none-eabi"        # Cortex-M3
+# target = "thumbv7em-none-eabi"       # Cortex-M4 and Cortex-M7 (no FPU)
+# target = "thumbv7em-none-eabihf"     # Cortex-M4F and Cortex-M7F (with FPU)
+# target = "thumbv8m.base-none-eabi"   # Cortex-M23
+# target = "thumbv8m.main-none-eabi"   # Cortex-M33 (no FPU)
+# target = "thumbv8m.main-none-eabihf" # Cortex-M33 (with FPU)
 
-[features]
-default = []
+[env]
+DEFMT_LOG = "error"
+KEYBOARD_TOML_PATH =  { value = "keyboard.toml", relative = true }
+- DEFMT_LOG = "debug"
++ DEFMT_LOG = "error"
 
-[profile.release]
-opt-level = "z"        # 极致大小优化
-lto = true
-codegen-units = 1
-panic = "abort"
-debug = false
-strip = true
-
-[profile.release]
-opt-level = "z"       # 最小体积优化，牺牲速度换空间
-codegen-units = 1
-panic = "abort"       # 移除panic打印字符串
-lto = true            # 全局链接优化，删除冗余代码
-strip = true          # 剥离调试符号
-
-[target.thumbv7em-none-eabihf]
-rustflags = ["-C", "link-arg=--nmagic"]
+[unstable]
+build-std = ["core"]
+build-std-features = ["panic_immediate_abort"]
