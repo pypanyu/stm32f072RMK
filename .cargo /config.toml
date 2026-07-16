@@ -15,8 +15,7 @@ target = "thumbv6m-none-eabi"        # Cortex-M0 and Cortex-M0+
 [env]
 DEFMT_LOG = "error"
 KEYBOARD_TOML_PATH =  { value = "keyboard.toml", relative = true }
-- DEFMT_LOG = "debug"
-+ DEFMT_LOG = "error"
+DEFMT_LOG = "debug"
 
 [unstable]
 build-std = ["core"]
